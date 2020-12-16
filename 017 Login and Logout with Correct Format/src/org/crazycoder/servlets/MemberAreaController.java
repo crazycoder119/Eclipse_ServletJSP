@@ -27,7 +27,8 @@ public class MemberAreaController extends HttpServlet {
 			break;
 		case "destroy": 
 			request.getSession().invalidate();	
-			response.sendRedirect(request.getContextPath()+"/SiteController?action=login");
+			String encode = response.encodeURL(request.getContextPath());
+			response.sendRedirect(encode+"/SiteController?action=login");
 			 break;
 		default:
 			break;

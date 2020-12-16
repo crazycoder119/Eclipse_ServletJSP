@@ -63,10 +63,13 @@ public class SiteController extends HttpServlet {
 					HttpSession newSession = request.getSession(true);
 					newSession.setMaxInactiveInterval(300);
 					newSession.setAttribute("username", username);
-					response.sendRedirect(request.getContextPath()+"/MemberAreaController?action=memberarea");
+					// If cookies are disabled
+					String encode = response.encodeURL(request.getContextPath());
+					response.sendRedirect(encode+"/MemberAreaController?action=memberarea");
 					
 				} else {
-					response.sendRedirect(request.getContextPath()+"/SiteController?action=login");
+					String encode = response.encodeURL(request.getContextPath());
+					response.sendRedirect(encode+"/SiteController?action=login");
 				}
 	}
 	
